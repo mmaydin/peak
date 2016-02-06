@@ -10,6 +10,7 @@ class User
     private $photo = '';
     private $wallet;
     private $gifts;
+    private $send_gift_user_ids;
     private $friends;
     private $active = false;
 
@@ -220,6 +221,26 @@ class User
         }
 
         return false;
+    }
+
+    public function alreadySendGift($friendId) {
+        if ($this->send_gift_user_ids == null) {
+            $connection = Connection::get();
+            $today = date('Y-m-d');
+            $sql = 'SELECT user_id FROM user_gifts WHERE sender_id = :sender_id AND DATE_FORMAT(created_date, "%Y-%m-%d") = :today';
+
+            $STH = $connection->prepare($sql);
+            $STH->bindParam(':sender_id', $this->id);
+            $STH->bindParam(':today', $today);
+            $STH->execute();
+
+            $this->send_gift_user_ids = array();
+            while($row = $STH->fetch(PDO::FETCH_ASSOC)) {
+                $this->send_gift_user_ids[] = $row['user_id'];
+            }
+        }
+
+        return in_array($friendId, $this->send_gift_user_ids);
     }
 
     public function addGift($count) {

@@ -53,13 +53,13 @@ $topUsers = Statistics::getTopList();
                             <td><?php echo $friend->getWallet()->getCoin(); ?></td>
                             <td><?php echo $friend->getWallet()->getGold(); ?></td>
                             <td>
-                                <?php if ($friend->getId() != $user->getId()): ?>
+                                <?php if ($friend->getId() != $user->getId() && !$user->alreadySendGift($friend->getId())): ?>
                                     <a href="#" onclick="chooseGift(<?php echo $friend->getId(); ?>, 'coin');">Send Coins</a>
                                 <?php endif; ?>
                             </td>
                             <td>
                                 
-                                <?php if ($friend->getId() != $user->getId()): ?>
+                                <?php if ($friend->getId() != $user->getId() && !$user->alreadySendGift($friend->getId())): ?>
                                     <a href="#" onclick="chooseGift(<?php echo $friend->getId(); ?>, 'gold');">Send Gold</a>
                                 <?php endif; ?>
                             </td>
@@ -88,13 +88,13 @@ $topUsers = Statistics::getTopList();
                             <td><?php echo $topUser->getWallet()->getCoin(); ?></td>
                             <td><?php echo $topUser->getWallet()->getGold(); ?></td>
                             <td>
-                                <?php if ($topUser->getId() != $user->getId()): ?>
+                                <?php if ($topUser->getId() != $user->getId() && !$user->alreadySendGift($topUser->getId())): ?>
                                     <a href="#" onclick="chooseGift(<?php echo $topUser->getId(); ?>, 'coin');">Send Coins</a>
                                 <?php endif; ?>
                             </td>
                             <td>
                                 
-                                <?php if ($topUser->getId() != $user->getId()): ?>
+                                <?php if ($topUser->getId() != $user->getId() && !$user->alreadySendGift($topUser->getId())): ?>
                                     <a href="#" onclick="chooseGift(<?php echo $topUser->getId(); ?>, 'gold');">Send Gold</a>
                                 <?php endif; ?>
                             </td>
