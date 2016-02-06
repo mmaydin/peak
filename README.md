@@ -15,4 +15,4 @@ RULES
 
 Example:
 
-http://themodam.in/peak/index.php
+http://themodam.in/peak/
