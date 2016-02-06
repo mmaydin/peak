@@ -10,8 +10,8 @@ if (!(isset($_SESSION['user_id']) && !empty($_SESSION['user_id']))) {
 $user = User::findById($_SESSION['user_id']);
 
 $topUsers = Statistics::getTopList();
-?>
 
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -191,7 +191,7 @@ $topUsers = Statistics::getTopList();
 
             window.fbAsyncInit = function() {
                 FB.init({
-                    appId      : '36690848899',
+                    appId      : '<?php echo FB_APP_ID; ?>',
                     cookie     : true,
                     xfbml      : true,
                     version    : 'v2.2'
