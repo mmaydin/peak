@@ -11,3 +11,8 @@ RULES
 3. Users can claim unlimited gifts.
 
 4. Gifts are expired after 1 week.
+
+
+Example:
+
+http://themodam.in/peak/index.php
