@@ -1,3 +1,4 @@
+<?php include 'require.php'; ?>
 <!DOCTYPE html>
 <html>
     <head>
